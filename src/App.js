@@ -1,20 +1,22 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Homepage from "./components/Homepage";
+import Listpage from "./components/Listpage";
 
 const App = () => {
   return (
     <Router>
-        <Switch>
-          <Route path="/" exact>
-
-          </Route>
-        </Switch>
+      <Switch>
+        <Route path="/" exact>
+          <Homepage />
+        </Route>
+        <Route path="/list/:id">
+          <Listpage />
+        </Route>
+      </Switch>
     </Router>
   );
-}
+};
 
 export default App;
