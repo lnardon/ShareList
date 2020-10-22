@@ -3,16 +3,23 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Homepage from "./components/Homepage";
 import Listpage from "./components/Listpage";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <Router>
       <Switch>
         <Route path="/" exact>
-          <Homepage />
+          <>
+            <Homepage />
+            <Footer />
+          </>
         </Route>
         <Route path="/list/:id">
-          <Listpage />
+          <>
+            <Listpage />
+            <Footer />
+          </>
         </Route>
       </Switch>
     </Router>
