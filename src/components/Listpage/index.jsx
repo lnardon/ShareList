@@ -30,8 +30,7 @@ function Listpage() {
     socketRef.current.on("updatedTasks", (list) => {
       console.log(list);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   return (
     <div>

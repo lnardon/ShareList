@@ -1,3 +1,4 @@
+const fs = require("fs");
 const express = require("express");
 const http = require("http");
 const app = express();
@@ -5,24 +6,22 @@ const server = http.createServer(app);
 const socket = require("socket.io");
 const io = socket(server);
 
-let listTasks = [
-  {
-    title: "Number 1",
-    completed: false,
-    subtasks: [{ title: "Subtask", completed: false }],
-  },
-];
+let listTasks;
+
+fs.readFile("./neadb.json", (err, data) => {
+  listTasks = JSON.parse(data);
+});
 
 io.on("connection", (socket) => {
   socket.on("getTasks", ({ username, room }) => {
     const user = { room, username };
     socket.join(user.room);
-    socket.emit("tasks", listTasks);
+    socket.emit("tasks", listTasks[user.room]);
   });
   socket.on("addTask", ({ room, task }) => {
     socket.join(room);
-    listTasks.push(task);
-    socket.emit("updatedTasks", listTasks);
+    listTasks[room].push(task);
+    socket.emit("updatedTasks", listTasks[room]);
   });
 });
 
