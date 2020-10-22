@@ -1,11 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
+
+import TaskItemCard from "../TaskItemCard";
 
 import "./styles.css";
 
 function Listpage() {
   const socketRef = useRef();
   const id = window.location.pathname.split("/");
+  const [tasks, setTasks] = useState([]);
 
   function addTask() {
     socketRef.current.emit("addTask", {
@@ -21,20 +24,30 @@ function Listpage() {
   useEffect(() => {
     socketRef.current = io.connect(`http://localhost:5000/`);
     socketRef.current.on("tasks", (items) => {
-      console.log(items);
+      setTasks(items);
     });
     socketRef.current.emit("getTasks", {
       username: "Lucas",
       room: id[2],
     });
     socketRef.current.on("updatedTasks", (list) => {
-      console.log(list);
+      setTasks(list);
     });
   }, [id]);
 
   return (
     <div>
       <h1>List</h1>
+      {tasks.map((task, index) => {
+        return (
+          <TaskItemCard
+            title={task.title}
+            checked={task.completed}
+            index={index}
+            key={index}
+          />
+        );
+      })}
       <button onClick={addTask}>Create</button>
     </div>
   );
