@@ -2,13 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 
 import TaskItemCard from "../TaskItemCard";
-import Footer from "../Footer";
 import "./styles.css";
 
 function Listpage() {
   const socketRef = useRef();
   const id = window.location.pathname.split("/");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(false);
 
   function addTask() {
     socketRef.current.emit("addTask", {
@@ -22,7 +21,7 @@ function Listpage() {
   }
 
   useEffect(() => {
-    socketRef.current = io.connect(`http://localhost:5000/`);
+    socketRef.current = io.connect("http://172.16.51.195:5000");
     socketRef.current.on("tasks", (items) => {
       setTasks(items);
     });
@@ -36,21 +35,26 @@ function Listpage() {
   }, [id]);
 
   return (
-    <div className="listPageContainer">
-      <h1>List</h1>
-      {tasks.map((task, index) => {
-        return (
-          <TaskItemCard
-            title={task.title}
-            checked={task.completed}
-            index={index}
-            key={index}
-          />
-        );
-      })}
-      <button onClick={addTask}>Create</button>
-      <Footer />
-    </div>
+    <>
+      {tasks ? (
+        <div className="listPageContainer">
+          <h1>Tasks</h1>
+          <div className="tasksContainer">
+            {tasks.map((task, index) => {
+              return (
+                <TaskItemCard
+                  title={task.title}
+                  checked={task.completed}
+                  index={index}
+                  key={index}
+                />
+              );
+            })}
+          </div>
+          <button onClick={addTask}>Create</button>
+        </div>
+      ) : null}
+    </>
   );
 }
 

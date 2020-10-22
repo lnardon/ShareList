@@ -2,14 +2,23 @@
   width: 100%;
   display: flex;
   align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0rem;
 }
 
 .itemInput {
   width: 20px;
   height: 20px;
+  margin-right: 0.5rem;
+}
+
+.itemInput:checked {
+  background-color: red;
 }
 
 .itemTitle {
   font-size: 1.25rem;
+  font-weight: 600;
   margin: 0;
+  color: #e1e1e1;
 }
