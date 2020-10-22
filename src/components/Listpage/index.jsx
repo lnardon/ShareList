@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 
 import TaskItemCard from "../TaskItemCard";
-
+import Footer from "../Footer";
 import "./styles.css";
 
 function Listpage() {
@@ -27,7 +27,7 @@ function Listpage() {
       setTasks(items);
     });
     socketRef.current.emit("getTasks", {
-      username: "Lucas",
+      username: "NRD Software",
       room: id[2],
     });
     socketRef.current.on("updatedTasks", (list) => {
@@ -36,7 +36,7 @@ function Listpage() {
   }, [id]);
 
   return (
-    <div>
+    <div className="listPageContainer">
       <h1>List</h1>
       {tasks.map((task, index) => {
         return (
@@ -49,6 +49,7 @@ function Listpage() {
         );
       })}
       <button onClick={addTask}>Create</button>
+      <Footer />
     </div>
   );
 }

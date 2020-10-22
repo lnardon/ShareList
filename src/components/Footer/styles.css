@@ -1,0 +1,23 @@
+.footerContainer {
+  width: 100%;
+  background-color: #191919;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0rem;
+}
+
+.footerText {
+  font-size: 0.75rem;
+  color: #e1e1e1;
+  font-weight: 500;
+}
+
+.footerLink {
+  font-size: 1.125rem;
+  color: #fafafa;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+}

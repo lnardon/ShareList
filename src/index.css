@@ -1,0 +1,9 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: content-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
