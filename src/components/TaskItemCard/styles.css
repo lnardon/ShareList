@@ -1,0 +1,15 @@
+.itemListContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.itemInput {
+  width: 20px;
+  height: 20px;
+}
+
+.itemTitle {
+  font-size: 1.25rem;
+  margin: 0;
+}
