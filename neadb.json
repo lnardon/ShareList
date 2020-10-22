@@ -1,9 +1,0 @@
-{
-  "nrdsoftware": [
-    {
-      "title": "Number 1",
-      "completed": false,
-      "subtasks": [{ "title": "Subtask", "completed": false }]
-    }
-  ]
-}

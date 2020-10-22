@@ -8,7 +8,7 @@ const io = socket(server);
 
 let listTasks;
 
-fs.readFile("./neadb.json", (err, data) => {
+fs.readFile("./db.json", "utf-8", (err, data) => {
   listTasks = JSON.parse(data);
 });
 
@@ -22,6 +22,12 @@ io.on("connection", (socket) => {
     socket.join(room);
     listTasks[room].push(task);
     socket.emit("updatedTasks", listTasks[room]);
+  });
+
+  socket.on("disconnect", () => {
+    fs.writeFile("./db.json", JSON.stringify(listTasks), (err) => {
+      if (err) throw err;
+    });
   });
 });
 
