@@ -18,17 +18,26 @@ io.on("connection", (socket) => {
     socket.join(user.room);
     socket.emit("tasks", listTasks[user.room]);
   });
+
   socket.on("addTask", ({ room, task }) => {
     socket.join(room);
     listTasks[room].push(task);
     socket.emit("updatedTasks", listTasks[room]);
   });
 
-  socket.on("disconnect", () => {
-    fs.writeFile("./db.json", JSON.stringify(listTasks), (err) => {
-      if (err) throw err;
-    });
+  socket.on("removeTask", ({ room, taskIndex }) => {
+    socket.join(room);
+    listTasks[room] = listTasks[room].filter(
+      (task, index) => index !== taskIndex
+    );
+    socket.emit("updatedTasks", listTasks[room]);
   });
+
+  // socket.on("disconnect", () => {
+  //   fs.writeFile("./db.json", JSON.stringify(listTasks), (err) => {
+  //     if (err) throw err;
+  //   });
+  // });
 });
 
 server.listen(process.env.PORT || 5000, () => {
