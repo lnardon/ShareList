@@ -1,5 +1,6 @@
 .listPageContainer {
   width: 100%;
+  max-width: 600px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -7,6 +8,34 @@
 }
 
 .tasksContainer {
-  width: 80%;
-  max-width: 500px;
+  width: 100%;
+}
+
+.addTaskDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+}
+
+.addTaskInput {
+  border: none;
+  background-color: #1f1f1f;
+  outline: none;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.125rem;
+  margin-right: 1rem;
+  color: #fafafa;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.addTaskButton {
+  border: none;
+  padding: 0.25rem;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fafafa;
 }

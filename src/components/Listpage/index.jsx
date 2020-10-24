@@ -11,21 +11,33 @@ function Listpage() {
   const [taskName, setTaskName] = useState("");
 
   function addTask() {
-    let newTask = {
-      room: id[2],
-      task: {
-        title: taskName,
-        completed: false,
-        subtasks: [],
-      },
-    };
+    // TODO: Send only the added task and not the full list
+    let newTasks = tasks;
+    newTasks.push({
+      title: taskName,
+      completed: false,
+      subtasks: [],
+    });
+    listRef.set(newTasks);
+  }
+
+  function handleCheck(index) {
+    let newTasks = tasks;
+    newTasks[index].completed = !newTasks[index].completed;
+    listRef.set(newTasks);
+  }
+
+  function deleteTask(index) {
+    let newTasks = tasks;
+    newTasks.splice(index, 1);
+    listRef.set(newTasks);
   }
 
   useEffect(() => {
-    listRef.on("value", (snapshot) => {
-      console.log("SKRT" + snapshot.val());
+    listRef.on("value", (snap) => {
+      setTasks(snap.val());
     });
-  }, [listRef]);
+  }, []); //eslint-disable-line
 
   return (
     <>
@@ -40,14 +52,24 @@ function Listpage() {
                   checked={task.completed}
                   index={index}
                   key={index}
+                  handleCheck={() => handleCheck(index)}
+                  deleteTask={() => deleteTask(index)}
                 />
               );
             })}
           </div>
-          <input type="text" onChange={(e) => setTaskName(e.target.value)} />
-          <button onClick={addTask}>Create</button>
         </div>
       ) : null}
+      <div className="addTaskDiv">
+        <input
+          className="addTaskInput"
+          type="text"
+          onChange={(e) => setTaskName(e.target.value)}
+        />
+        <button className="addTaskButton" onClick={addTask}>
+          Create
+        </button>
+      </div>
     </>
   );
 }
