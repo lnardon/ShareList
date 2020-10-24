@@ -1,12 +1,19 @@
+.logo {
+  position: absolute;
+  width: 40px;
+  margin-top: 2rem;
+  left: 2%;
+}
+
 .stripeDiv {
   width: 90%;
   max-width: 600px;
-  margin: 5rem 0rem 0rem 0rem;
+  margin: 9rem 0rem 0rem 0rem;
 }
 
 .titleStripe {
   display: block;
-  height: 3px;
+  height: 4px;
   border-radius: 50px;
   background: linear-gradient(#40c8ae, #0097fb);
   animation: stripeAppear 0.9s ease-out forwards;

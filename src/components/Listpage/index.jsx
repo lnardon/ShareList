@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import firebase from "../../firebase";
 
 import TaskItemCard from "../TaskItemCard";
@@ -42,6 +43,13 @@ function Listpage() {
 
   return (
     <>
+      <Link to={"/"}>
+        <img
+          src={require("../../assets/logo.png")}
+          alt="logo"
+          className="logo"
+        />
+      </Link>
       <div className="stripeDiv">
         <span className="titleStripe"></span>
       </div>
