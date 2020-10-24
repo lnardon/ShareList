@@ -12,17 +12,18 @@ function Listpage() {
 
   function addTask() {
     // TODO: Send only the added task and not the full list
-    let newTasks = tasks;
+    let newTasks = tasks || [];
     newTasks.push({
       title: taskName,
       completed: false,
       subtasks: [],
     });
     listRef.set(newTasks);
+    setTaskName("");
   }
 
   function handleCheck(index) {
-    let newTasks = tasks;
+    let newTasks = tasks || [];
     newTasks[index].completed = !newTasks[index].completed;
     listRef.set(newTasks);
   }
@@ -41,9 +42,12 @@ function Listpage() {
 
   return (
     <>
-      {tasks.length > 0 ? (
+      <div className="stripeDiv">
+        <span className="titleStripe"></span>
+      </div>
+      <h1 className="taskListTitle">{id[2].toLocaleUpperCase()}</h1>
+      {tasks && tasks.length > 0 ? (
         <div className="listPageContainer">
-          <h1>Tasks</h1>
           <div className="tasksContainer">
             {tasks.map((task, index) => {
               return (
@@ -65,6 +69,8 @@ function Listpage() {
           className="addTaskInput"
           type="text"
           onChange={(e) => setTaskName(e.target.value)}
+          placeholder="New task"
+          value={taskName}
         />
         <button className="addTaskButton" onClick={addTask}>
           Create
