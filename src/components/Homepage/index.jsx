@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import "./styles.css";
@@ -7,14 +7,6 @@ import Footer from "../Footer";
 function Homepage() {
   const [listName, setListName] = useState("");
   const inputRef = useRef(null);
-
-  useEffect(() => {
-    inputRef.current.addEventListener("keyup", (event) => {
-      if (event.key === "Enter") {
-        window.open(`./list/${encodeURI(listName)}`);
-      }
-    });
-  }, [listName]);
 
   return (
     <>

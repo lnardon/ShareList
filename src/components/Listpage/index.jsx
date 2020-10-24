@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import firebase from "../../firebase";
 
@@ -78,9 +78,9 @@ function Listpage() {
         <input
           className="addTaskInput"
           type="text"
-          onChange={(e) => setTaskName(e.target.value)}
           placeholder="New task"
           value={taskName}
+          onChange={(e) => setTaskName(e.target.value)}
         />
         <button className="addTaskButton" onClick={addTask}>
           +
