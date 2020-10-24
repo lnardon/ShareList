@@ -1,42 +1,35 @@
-import React, { useState, useEffect, useRef } from "react";
-import io from "socket.io-client";
+import React, { useState, useEffect } from "react";
+import firebase from "../../firebase";
 
 import TaskItemCard from "../TaskItemCard";
 import "./styles.css";
 
 function Listpage() {
-  const socketRef = useRef();
   const id = window.location.pathname.split("/");
-  const [tasks, setTasks] = useState(false);
+  const listRef = firebase.database().ref(`availableLists/${id[2]}`);
+  const [tasks, setTasks] = useState([]);
+  const [taskName, setTaskName] = useState("");
 
   function addTask() {
-    socketRef.current.emit("addTask", {
+    let newTask = {
       room: id[2],
       task: {
-        title: "added" + id[2],
+        title: taskName,
         completed: false,
-        subtasks: [{ title: "Added Subtask", completed: false }],
+        subtasks: [],
       },
-    });
+    };
   }
 
   useEffect(() => {
-    socketRef.current = io.connect("http://172.16.51.195:5000");
-    socketRef.current.on("tasks", (items) => {
-      setTasks(items);
+    listRef.on("value", (snapshot) => {
+      console.log("SKRT" + snapshot.val());
     });
-    socketRef.current.emit("getTasks", {
-      username: "NRD Software",
-      room: id[2],
-    });
-    socketRef.current.on("updatedTasks", (list) => {
-      setTasks(list);
-    });
-  }, [id]);
+  }, [listRef]);
 
   return (
     <>
-      {tasks ? (
+      {tasks.length > 0 ? (
         <div className="listPageContainer">
           <h1>Tasks</h1>
           <div className="tasksContainer">
@@ -51,6 +44,7 @@ function Listpage() {
               );
             })}
           </div>
+          <input type="text" onChange={(e) => setTaskName(e.target.value)} />
           <button onClick={addTask}>Create</button>
         </div>
       ) : null}
