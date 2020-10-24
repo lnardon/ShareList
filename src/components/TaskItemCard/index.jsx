@@ -10,7 +10,7 @@ function TaskItemCard({ checked, title, index, handleCheck, deleteTask }) {
       }
     >
       <label className="container">
-        {title}
+        <h1 className="taskItemTitle">{title}</h1>
         <input
           type="checkbox"
           id={index}

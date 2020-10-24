@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "./styles.css";
@@ -8,29 +8,46 @@ function Homepage() {
   const [listName, setListName] = useState("");
   const inputRef = useRef(null);
 
+  useEffect(() => {
+    inputRef.current.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        window.open(`./list/${encodeURI(listName)}`);
+      }
+    });
+  }, [listName]);
+
   return (
-    <div className="homeContainer">
-      <div className="homepageContainer">
-        <h1 className="title">Share List</h1>
-        <span className="stripe"></span>
-        <p className="subtitle">
-          With share list you can create, share and track task lists in
-          real-time.
-        </p>
-        <input
-          type="text"
-          className="listNameInput"
-          placeholder="List name"
-          onChange={(e) => setListName(e.target.value)}
-          onFocus={(e) => inputRef.current.scrollIntoView()}
-          ref={inputRef}
+    <>
+      <Link to={"/"}>
+        <img
+          src={require("../../assets/logo.png")}
+          alt="logo"
+          className="logo"
         />
-        <Link to={`/list/${encodeURI(listName)}`}>
-          <button className="createBtn">Create</button>
-        </Link>
+      </Link>
+      <div className="homeContainer">
+        <div className="homepageContainer">
+          <h1 className="title">Share List</h1>
+          <span className="stripe"></span>
+          <p className="subtitle">
+            With share list you can create, share and track task lists in
+            real-time.
+          </p>
+          <input
+            type="text"
+            className="listNameInput"
+            placeholder="List name"
+            onChange={(e) => setListName(e.target.value)}
+            onFocus={(e) => inputRef.current.scrollIntoView()}
+            ref={inputRef}
+          />
+          <Link to={`/list/${encodeURI(listName)}`}>
+            <button className="createBtn">Create</button>
+          </Link>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 
