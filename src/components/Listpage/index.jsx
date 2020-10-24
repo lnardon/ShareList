@@ -73,7 +73,7 @@ function Listpage() {
           value={taskName}
         />
         <button className="addTaskButton" onClick={addTask}>
-          Create
+          +
         </button>
       </div>
     </>
