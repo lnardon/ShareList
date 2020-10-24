@@ -20,9 +20,12 @@ function TaskItemCard({ checked, title, index, handleCheck, deleteTask }) {
         />
         <span className="checkmark"></span>
       </label>
-      <button onClick={deleteTask} className="deleteBtn">
-        X
-      </button>
+      <img
+        alt="icon"
+        src="https://www.flaticon.com/svg/static/icons/svg/1828/1828778.svg"
+        onClick={deleteTask}
+        className="deleteBtn"
+      />
     </div>
   );
 }

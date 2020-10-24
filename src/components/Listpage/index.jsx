@@ -45,7 +45,9 @@ function Listpage() {
       <div className="stripeDiv">
         <span className="titleStripe"></span>
       </div>
-      <h1 className="taskListTitle">{id[2].toLocaleUpperCase()}</h1>
+      <h1 className="taskListTitle">
+        {decodeURI(id[2].charAt(0).toUpperCase() + id[2].slice(1))}
+      </h1>
       {tasks && tasks.length > 0 ? (
         <div className="listPageContainer">
           <div className="tasksContainer">

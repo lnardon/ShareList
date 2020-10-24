@@ -5,6 +5,7 @@
   justify-content: space-between;
   margin-bottom: 0.5rem;
   padding: 0.25rem 0rem;
+  outline: none;
 }
 
 .itemInput {
@@ -27,15 +28,15 @@
 .deleteBtn {
   background-color: transparent;
   border: none;
-  width: 50px;
-  height: 50px;
   color: #fafafa;
   outline: none;
   cursor: pointer;
+  width: 13px;
+  filter: invert(100%);
+  padding: 6px;
 }
 
-/* dsdsd */
-
+/* Checkbox */
 .container {
   display: block;
   position: relative;
