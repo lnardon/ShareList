@@ -1,3 +1,25 @@
+.stripeDiv {
+  width: 100%;
+  max-width: 600px;
+  margin: 5rem 0rem 0rem 0rem;
+}
+
+.titleStripe {
+  display: block;
+  height: 5px;
+  border-radius: 50px;
+  background: linear-gradient(#40c8ae, #0097fb);
+  animation: stripeAppear 0.9s ease-out forwards;
+}
+
+.taskListTitle {
+  width: 100%;
+  max-width: 600px;
+  font-size: 2.5rem;
+  color: #fafafa;
+  margin-bottom: 2rem;
+}
+
 .listPageContainer {
   width: 100%;
   max-width: 600px;
@@ -38,4 +60,17 @@
   font-size: 1rem;
   font-weight: 500;
   color: #fafafa;
+  outline: none;
+  cursor: pointer;
+}
+
+@keyframes stripeAppear {
+  from {
+    opacity: 0;
+    width: 0px;
+  }
+  to {
+    opacity: 1;
+    width: 200px;
+  }
 }

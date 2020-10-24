@@ -103,3 +103,29 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.fadeOut {
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+.fadeIn {
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}

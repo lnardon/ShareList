@@ -5,8 +5,9 @@ import "./styles.css";
 function TaskItemCard({ checked, title, index, handleCheck, deleteTask }) {
   return (
     <div
-      className="itemListContainer"
-      style={checked ? { opacity: 0.15 } : null}
+      className={
+        checked ? "itemListContainer fadeOut" : "itemListContainer fadeIn"
+      }
     >
       <label className="container">
         {title}
