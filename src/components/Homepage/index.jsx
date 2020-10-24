@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 import "./styles.css";
+import Footer from "../Footer";
 
 function Homepage() {
   const [listName, setListName] = useState("");
+  const inputRef = useRef(null);
 
   return (
     <div className="homeContainer">
@@ -20,11 +22,14 @@ function Homepage() {
           className="listNameInput"
           placeholder="List name"
           onChange={(e) => setListName(e.target.value)}
+          onFocus={(e) => inputRef.current.scrollIntoView()}
+          ref={inputRef}
         />
         <Link to={`/list/${encodeURI(listName)}`}>
           <button className="createBtn">Create</button>
         </Link>
       </div>
+      <Footer />
     </div>
   );
 }

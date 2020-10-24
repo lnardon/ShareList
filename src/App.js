@@ -10,16 +10,11 @@ const App = () => {
     <Router>
       <Switch>
         <Route path="/" exact>
-          <>
-            <Homepage />
-            <Footer />
-          </>
+          <Homepage />
         </Route>
         <Route path="/list/:id">
-          <>
-            <Listpage />
-            <Footer />
-          </>
+          <Listpage />
+          <Footer />
         </Route>
       </Switch>
     </Router>
