@@ -34,7 +34,7 @@ function Homepage() {
             ref={inputRef}
           />
           <Link to={`/list/${encodeURI(listName)}`}>
-            <button className="createBtn">Create</button>
+            <button className="createBtn">Enter</button>
           </Link>
         </div>
         <Footer />
