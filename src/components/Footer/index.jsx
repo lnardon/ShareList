@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className="footerContainer">
       <h4 className="footerText">Made with Love by</h4>
-      <a href="" className="footerLink">
+      <a href="https://nrdsoftware.vercel.app" className="footerLink">
         NRD Software
       </a>
     </div>
