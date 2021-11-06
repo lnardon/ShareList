@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import "./styles.css";
 import Footer from "../Footer";
@@ -7,6 +7,13 @@ import Footer from "../Footer";
 function Homepage() {
   const [listName, setListName] = useState("");
   const inputRef = useRef(null);
+  const history = useHistory();
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      history.push(`/list/${encodeURI(listName)}`);
+    }
+  };
 
   return (
     <>
@@ -32,6 +39,7 @@ function Homepage() {
             onChange={(e) => setListName(e.target.value)}
             onFocus={(e) => inputRef.current.scrollIntoView()}
             ref={inputRef}
+            onKeyDown={handleEnter}
           />
           <Link to={`/list/${encodeURI(listName)}`}>
             <button className="createBtn">Enter</button>

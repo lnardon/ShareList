@@ -37,9 +37,9 @@
   color: #fafafa;
   outline: none;
   cursor: pointer;
-  width: 13px;
+  width: 35px;
   filter: invert(100%);
-  padding: 6px;
+  padding: 0.5rem;
 }
 
 /* Checkbox */
