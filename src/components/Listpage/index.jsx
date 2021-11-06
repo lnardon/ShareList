@@ -35,6 +35,19 @@ function Listpage() {
     listRef.set(newTasks);
   }
 
+  const handleEnter = (e) => {
+    const regExp = /[a-zA-Z]/g;
+    if (e.key === "Enter" && regExp.test(taskName)) {
+      addTask();
+    }
+  };
+
+  const handleInput = (e) => {
+    if (!(e.target.value === " " && taskName === "")) {
+      setTaskName(e.target.value);
+    }
+  };
+
   useEffect(() => {
     listRef.on("value", (snap) => {
       setTasks(snap.val());
@@ -53,9 +66,7 @@ function Listpage() {
       <div className="stripeDiv">
         <span className="titleStripe"></span>
       </div>
-      <h1 className="taskListTitle">
-        {decodeURI(id[2].charAt(0).toUpperCase() + id[2].slice(1))}
-      </h1>
+      <h1 className="taskListTitle">{decodeURI(id[2])}</h1>
       {tasks && tasks.length > 0 ? (
         <div className="listPageContainer">
           <div className="tasksContainer">
@@ -80,7 +91,8 @@ function Listpage() {
           type="text"
           placeholder="New task"
           value={taskName}
-          onChange={(e) => setTaskName(e.target.value)}
+          onChange={handleInput}
+          onKeyDown={handleEnter}
         />
         <button className="addTaskButton" onClick={addTask}>
           +

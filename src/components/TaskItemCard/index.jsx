@@ -1,4 +1,5 @@
 import React from "react";
+import CloseIcon from "../../assets/close.png";
 
 import "./styles.css";
 
@@ -22,7 +23,7 @@ function TaskItemCard({ checked, title, index, handleCheck, deleteTask }) {
       </label>
       <img
         alt="icon"
-        src="https://www.flaticon.com/svg/static/icons/svg/1828/1828778.svg"
+        src={CloseIcon}
         onClick={deleteTask}
         className="deleteBtn"
       />

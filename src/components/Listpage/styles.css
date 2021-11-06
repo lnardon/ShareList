@@ -46,7 +46,7 @@
   justify-content: space-between;
   width: 90%;
   max-width: 600px;
-  margin-bottom: 2rem;
+  margin: 0.5rem 0rem 2rem 0rem;
 }
 
 .addTaskInput {
@@ -54,7 +54,7 @@
   background-color: #1f1f1f;
   outline: none;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.125rem;
   margin-right: 1rem;
   color: #fafafa;
@@ -64,14 +64,13 @@
 
 .addTaskButton {
   border: none;
-  padding: 0.25rem;
+  padding: 0.25rem 0.5rem;
   background-color: transparent;
-  font-size: 1rem;
   font-weight: 500;
-  color: #fafafa;
+  color: #fafafaee;
   outline: none;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 3.25rem;
   line-height: 2rem;
 }
 
