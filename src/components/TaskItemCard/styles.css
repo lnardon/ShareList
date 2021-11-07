@@ -6,6 +6,7 @@
   margin-bottom: 0.5rem;
   padding: 0.25rem 0rem;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .itemInput {
@@ -39,7 +40,7 @@
   cursor: pointer;
   width: 35px;
   filter: invert(100%);
-  padding: 0.5rem;
+  padding: 0.25rem;
 }
 
 /* Checkbox */

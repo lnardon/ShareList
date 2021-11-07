@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import firebase from "../../firebase";
 
 import TaskItemCard from "../TaskItemCard";
+import closeIcon from "../../assets/close.png";
 import "./styles.css";
 
 function Listpage() {
@@ -63,10 +64,10 @@ function Listpage() {
           className="logo"
         />
       </Link>
+      <h1 className="taskListTitle">{decodeURI(id[2])}</h1>
       <div className="stripeDiv">
         <span className="titleStripe"></span>
       </div>
-      <h1 className="taskListTitle">{decodeURI(id[2])}</h1>
       {tasks && tasks.length > 0 ? (
         <div className="listPageContainer">
           <div className="tasksContainer">
@@ -94,8 +95,13 @@ function Listpage() {
           onChange={handleInput}
           onKeyDown={handleEnter}
         />
-        <button className="addTaskButton" onClick={addTask}>
-          +
+        <button className="addTaskButton">
+          <img
+            src={closeIcon}
+            alt="Close Icon"
+            className="addTaskIcon"
+            onClick={addTask}
+          />
         </button>
       </div>
     </>
