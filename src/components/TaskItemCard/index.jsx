@@ -11,7 +11,9 @@ function TaskItemCard({ checked, title, index, handleCheck, deleteTask }) {
       }
     >
       <label className="container">
-        <h1 className="taskItemTitle">{title}</h1>
+        <div className="taskItemTitleDiv">
+          <h1 className="taskItemTitle">{title}</h1>
+        </div>
         <input
           type="checkbox"
           id={index}

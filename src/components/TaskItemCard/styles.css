@@ -1,7 +1,7 @@
 .itemListContainer {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 0.5rem;
   padding: 0.25rem 0rem;
@@ -9,27 +9,18 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.itemInput {
-  width: 20px;
-  height: 20px;
-  margin-right: 0.5rem;
-}
-
-.itemInput:checked {
-  background-color: red;
-}
-
-.itemTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0;
-  color: #e1e1e1;
+.taskItemTitleDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
 }
 
 .taskItemTitle {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-left: 0.5rem;
+  word-break: break-all;
+  margin: 0.35rem 0.3rem 0.3rem 0.3rem;
 }
 
 .deleteBtn {
@@ -38,7 +29,7 @@
   color: #fafafa;
   outline: none;
   cursor: pointer;
-  width: 35px;
+  width: 2rem;
   filter: invert(100%);
   padding: 0.25rem;
 }
@@ -47,10 +38,8 @@
 .container {
   display: block;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
+  padding-left: 47px;
   cursor: pointer;
-  font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -76,19 +65,15 @@
   left: 0;
   height: 25px;
   width: 25px;
-  border: 3px solid;
+  border: 2px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #40c8ae, #0097fb);
+  margin: 0.5rem;
 }
 
-/* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #0097fb18;
 }
-
-/* .container input:checked ~ .checkmark {
-  background-color: #2196f3;
-} */
 
 .checkmark:after {
   content: "";
